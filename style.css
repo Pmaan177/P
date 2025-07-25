@@ -3,7 +3,19 @@ body {
   font-family: Arial, sans-serif;
   padding: 20px;
   margin: 0;
-  background-color: transparent; /* 👈 Transparent background */
+  background-color: transparent;
+}
+
+/* 🎬 Background Video */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  object-fit: cover;
+  pointer-events: none;
 }
 
 /* 🏷️ Main Heading */
@@ -18,15 +30,9 @@ body {
 }
 
 @keyframes glowPulse {
-  0% {
-    text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b, 0 0 30px #fdd835;
-  }
-  50% {
-    text-shadow: 0 0 20px #ffee58, 0 0 30px #fdd835, 0 0 40px #fbc02d;
-  }
-  100% {
-    text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b, 0 0 30px #fdd835;
-  }
+  0% { text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b, 0 0 30px #fdd835; }
+  50% { text-shadow: 0 0 20px #ffee58, 0 0 30px #fdd835, 0 0 40px #fbc02d; }
+  100% { text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b, 0 0 30px #fdd835; }
 }
 
 /* ✅ Sticky Filter Bar */
@@ -34,7 +40,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: transparent; /* 🔄 REMOVE yellow */
+  background-color: transparent;
   padding: 12px 0;
   display: flex;
   justify-content: center;
@@ -43,11 +49,9 @@ body {
   flex-wrap: wrap;
   border-bottom: 1px solid #ccc;
   max-width: 100%;
-  box-shadow: none; /* 🔄 Remove box shadow if you want full transparency */
+  box-shadow: none;
 }
 
-
-/* 🔄 Input + Dropdown */
 .filter-bar select,
 .filter-bar input {
   padding: 12px 18px;
@@ -55,7 +59,6 @@ body {
   border-radius: 8px;
   border: 1px solid #333;
   min-width: 250px;
-  box-sizing: border-box;
   background-color: #fff;
   transition: border 0.3s ease;
 }
@@ -105,7 +108,7 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* 🖼️ Uniform Image Styling with ISO-Style 3D effect */
+/* 🖼️ Product Image 3D Effect */
 .product img {
   width: 100%;
   height: 150px;
@@ -114,14 +117,11 @@ body {
   background-color: #f5f5f5;
   padding: 8px;
   border: 1px solid #b0b0b0;
-
-  /* Deep metallic 3D shadowing */
   box-shadow:
-    4px 4px 8px rgba(0, 0, 0, 0.4),        /* outer dark shadow */
-    -4px -4px 6px rgba(255, 255, 255, 0.8),/* top-left highlight */
-    inset 2px 2px 4px rgba(0, 0, 0, 0.2),  /* inner bevel dark */
-    inset -2px -2px 4px rgba(255, 255, 255, 0.6); /* inner bevel light */
-
+    4px 4px 8px rgba(0, 0, 0, 0.4),
+    -4px -4px 6px rgba(255, 255, 255, 0.8),
+    inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.6);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -134,7 +134,6 @@ body {
     inset -2px -2px 5px rgba(255, 255, 255, 0.5);
 }
 
-/* 📝 Product Name */
 .product p {
   font-size: 14px;
   margin: 0;
@@ -149,9 +148,62 @@ body {
   color: #000;
 }
 
-/* 🪧 Coming Soon Styling */
 .coming-soon {
   font-size: 16px;
   font-weight: bold;
   color: #d32f2f;
+}
+
+/* 🖼️ Scrollable Sidebars */
+.side-images {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 130px;
+  overflow-y: auto;
+  padding: 10px 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.side-images.left {
+  left: 10px;
+}
+
+.side-images.right {
+  right: 10px;
+}
+
+.side-images img {
+  width: 110px;
+  height: 100px;
+  margin: 10px 0;
+  border: 3px solid #333;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 768px) {
+  .side-images {
+    width: 60px;
+  }
+
+  .side-images img {
+    width: 50px;
+    height: 50px;
+    margin: 6px 0;
+  }
+
+  .filter-bar select,
+  .filter-bar input {
+    min-width: 180px;
+    font-size: 16px;
+  }
 }
